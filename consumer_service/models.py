@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel # type: ignore
 from sqlmodel import Field, SQLModel
 
 class Customer(SQLModel,table=True):

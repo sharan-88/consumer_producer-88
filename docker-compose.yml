@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  product_service:
+    build:
+      context: ./product-service  # path to product service
+    container_name: product_service
+    ports:
+      - "8001:8000"  # host:container — change 8001 if needed
+    volumes:
+      - ./product-service:/app  
+    networks:
+      - app-network
+
+  customer_service:
+    build:
+      context: ./consumer_service  # path to customer service
+    container_name: customer_service
+    ports:
+      - "8002:8000"  # host:container — change 8002 if needed
+    depends_on:
+      - product_service
+    volumes:
+      - ./consumer_serrvice:/app  
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+
+# docker-compose up
+# # docker-compose up -d

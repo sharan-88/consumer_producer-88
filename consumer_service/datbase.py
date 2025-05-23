@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import SQLModel, Session, create_engine # type: ignore
 
 DATABASE_URL = "sqlite:///./customer.db"
 engine= create_engine(DATABASE_URL)
